@@ -6,10 +6,16 @@ export default function Navbar() {
   const { user } = useUserContext();
 
   return (
-    <div>
+    <div className="flex h-[8vh] items-center justify-between text-lg px-16 ">
       <Link to="/">
         Home
       </Link>
+
+      <div>
+        Create MERN JS App
+      </div>
+
+
       {user ? (
         <div>
           <Link to="/">
@@ -21,12 +27,12 @@ export default function Navbar() {
           </div>
         </div>
       ) : (
-          <div>
-            <Link to="/login">
+          <div className="flex gap-8">
+            <Link to="/auth/login">
               Login
             </Link>
 
-            <Link to="/signup">
+            <Link to="/auth/signup">
               Signup
             </Link>
         </div>
