@@ -1,7 +1,9 @@
-export default async function validate(validator) {
+const jwt = require("jsonwebtoken");
+
+function validate(validator) {
   return (req, res, next) => {
     const { error } = validator.validate(req.body);
-    
+
     if (!error)
       return next();
     else {
@@ -10,3 +12,5 @@ export default async function validate(validator) {
     }
   }
 }
+
+module.exports = validate

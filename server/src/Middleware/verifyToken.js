@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../Models/UserModel');
 
-export default async function verfiyToken(req, res, next) {
+async function verfiyToken(req, res, next) {
 
   const token = req.headers.authorization;
   const secret = process.env.SECRET
@@ -22,3 +22,5 @@ export default async function verfiyToken(req, res, next) {
     return next(error);
   }
 }
+
+module.exports = verfiyToken

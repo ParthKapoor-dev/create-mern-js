@@ -1,3 +1,6 @@
+import { useRef, useState } from "react"
+
+
 import signupAction from "@/actions/AuthActions/SignupAction"
 import { Button } from "@/components/ui/button"
 import {
@@ -11,17 +14,27 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-import { useState } from "react"
 
 export default function SignupPage() {
 
   const [disabled, setDisabled] = useState(false);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const nameRef = useRef();
 
-  async function handleSignup() {
+
+
+  async function handleSignup(event) {
+    event.preventDefault();
+    console.log("Clicked");
     setDisabled(true);
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const name = nameRef.current.value;
+
     try {
-      const signupData = await signupAction(email, password);
+      const signupData = await signupAction(name ,email, password);
       console.log(signupData);
     } catch (error) {
       console.log(error);
@@ -41,15 +54,15 @@ export default function SignupPage() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Name">Name</Label>
-                <Input id="Name" placeholder="Name" />
+                <Input id="Name" placeholder="Name" ref={nameRef} />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Email">Email</Label>
-                <Input id="Email" placeholder="Email" />
+                <Input id="Email" placeholder="Email" ref={emailRef}/>
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Password">Password</Label>
-                <Input id="Password" placeholder="Password" />
+                <Input id="Password" type="password" placeholder="Password" ref={passwordRef} />
               </div>
             </div>
           </form>

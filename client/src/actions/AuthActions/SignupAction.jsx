@@ -3,7 +3,7 @@ import useUserContext from "@/hooks/useUserContext";
 import axios from "axios";
 
 export default async function signupAction(name, email, password) {
-  const { dispatch } = useUserContext();
+  // const { dispatch } = useUserContext();
   const url = serverUrl + '/auth/signup';
   const data = { name, email, password }
 
@@ -15,10 +15,11 @@ export default async function signupAction(name, email, password) {
     });
 
     console.log(response);
-    dispatch({ type: "Login", payload: response.data })
+    // dispatch({ type: "Login", payload: response.data });
+    return response.data;
   } catch (error) {
-    console.log(error.response);
-    return error.response
+    console.log(error.message);
+    return error
   }
 
 }

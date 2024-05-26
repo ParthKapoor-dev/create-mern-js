@@ -1,6 +1,6 @@
 const devMode = {
   mode: "development mode",
-  serverUrl: "https://localhost:3000"
+  serverUrl: "http://localhost:3000"
 };
 
 const prodMode = {
