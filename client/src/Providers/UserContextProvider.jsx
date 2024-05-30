@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
   });
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('User&Token'));
-    if (userData.token) {
+    if (userData?.token) {
       dispatch({ type: "Login", payload: userData });
     }
   }, []);

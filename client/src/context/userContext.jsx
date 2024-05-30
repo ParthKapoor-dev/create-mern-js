@@ -13,6 +13,7 @@ export function handleReducerHook(prevState, action) {
 
     case "Logout": {
       console.log('logout');
+      localStorage.removeItem('User&Token');
       return { user: null, token: null };
     }
       
