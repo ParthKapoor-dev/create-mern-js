@@ -10,23 +10,40 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/components/ui/use-toast"
+import useUserContext from "@/hooks/useUserContext"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export default function LoginPage() {
 
   const [disabled, setDisabled] = useState(false);
-  const [error , setError ] = useState(null)
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { dispatch, user } = useUserContext();
+  const { toast } = useToast();
 
   async function handleLogin() {
     setDisabled(true);
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
     try {
-      const loginData = await loginAction(email, password);
-      console.log(loginData);
+      const loginData = await loginAction(email, password , dispatch);
+      if (!loginData.success) {
+        throw new Error(loginData.message);
+      }
+      toast({
+        title: "Hi 👋 " + loginData.json.data.user.name + " , Login is Successful!"
+      });
+      console.log(user)
     } catch (error) {
       console.log(error);
+      toast({
+        variant: "destructive",
+        title: error.message,
+      });
     }
-    setDisabled(false)
+    setDisabled(false);
   }
 
   return (
@@ -41,17 +58,17 @@ export default function LoginPage() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Email">Email</Label>
-                <Input id="Email" placeholder="Email" />
+                <Input id="Email" placeholder="Email" ref={emailRef}/>
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Password">Password</Label>
-                <Input id="Password" placeholder="Password" />
+                <Input id="Password" type="password" placeholder="Password" ref={passwordRef}/>
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <Button  className="w-full" onClick={handleLogin}>
+          <Button  className="w-full" onClick={handleLogin} disabled={disabled}>
             Login
           </Button>
           <Button  variant="outline" className="w-full" >

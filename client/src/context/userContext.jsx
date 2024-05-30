@@ -4,15 +4,14 @@ export const userContext = createContext();
 
 export function handleReducerHook(prevState, action) {
   switch (action.type) {
-    case "LOGIN": {
+    case "Login": {
       console.log(action.payload);
-      console.log(login);
       const data = action.payload
-      localStorage.setItem("User&Token" , JSON.stringify(data))
+      localStorage.setItem('User&Token' , JSON.stringify(data))
       return { ...data };
     }
 
-    case "LOGOUT": {
+    case "Logout": {
       console.log('logout');
       return { user: null, token: null };
     }

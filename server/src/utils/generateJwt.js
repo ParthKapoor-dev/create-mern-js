@@ -1,21 +1,17 @@
 const jwt = require("jsonwebtoken");
 
 // data in as object
-// exp is expirey
+// exp is expiry
 async function generateToken(data, exp) {
-  const secret = process.env.SECRET
+  const secret = process.env.SECRET;
   try {
-    const token = jwt.sign(data, secret, { expiresIn: exp },
-      (err, res) => {
-        if (err) {
-          console.log(err);
-          throw new Error("Error in generating Token");
-        }
-      });
-    return { success: true, token }
+    const token = jwt.sign(data, secret, { expiresIn: exp });
+    
+    return { success: true, token: token };
   } catch (error) {
-    return { success: false, message : error.message }
+    console.error(error);
+    return { success: false, message: error.message };
   }
 }
 
-module.exports = generateToken
+module.exports = generateToken;

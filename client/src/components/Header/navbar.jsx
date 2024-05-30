@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
-  const { user } = useUserContext();
+  const { user , dispatch } = useUserContext();
+
+
+  function handleLogout() {
+    dispatch({ type: "Logout" });
+  }
 
   return (
     <div className="flex h-[8vh] items-center justify-between text-lg px-16 ">
@@ -15,14 +20,13 @@ export default function Navbar() {
         Create MERN JS App
       </div>
 
-
       {user ? (
-        <div>
+        <div className="flex gap-8">
           <Link to="/">
             {user.name}
           </Link>
 
-          <div>
+          <div onClick={handleLogout} className="cursor-pointer">
             Logout
           </div>
         </div>
