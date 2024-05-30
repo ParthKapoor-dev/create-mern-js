@@ -12,10 +12,10 @@ import { Button } from "../ui/button"
 import { data } from "./DrawerData"
 
 
-export default function DrawerBox() {
+export default function DrawerBox({btnName}) {
   return (
     <Drawer>
-      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerTrigger className="text-lg h-full w-full">{btnName}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>

@@ -1,5 +1,8 @@
 import useUserContext from "@/hooks/useUserContext";
 import { Link } from "react-router-dom";
+import { ThemeSwitch } from "../DarkMode";
+
+
 
 export default function Navbar() {
 
@@ -20,8 +23,11 @@ export default function Navbar() {
         Create MERN JS App
       </div>
 
+
       {user ? (
         <div className="flex gap-8">
+          <ThemeSwitch />
+
           <Link to="/">
             {user.name}
           </Link>
@@ -32,6 +38,8 @@ export default function Navbar() {
         </div>
       ) : (
           <div className="flex gap-8">
+            <ThemeSwitch />
+
             <Link to="/auth/login">
               Login
             </Link>
