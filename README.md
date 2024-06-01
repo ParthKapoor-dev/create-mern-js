@@ -36,8 +36,15 @@ Follow these steps to get started with your new MERN application:
    cd client && npm install
 3. **Install Packages in Server Directory**:
    ```sh
-    cd sersver && npm install
-
+    cd server && npm install
+4. **create .env file in Server Directory**:
+   ```sh
+    PORT=3000
+    MONGO_URI="mongodb+srv://<username>:<password>.focvrms.mongodb.net/db-name"
+    SECRET="thisisasamplesecretpleasecreateyourownnewsecretforthisapp"
+5. **Start by running following commands in Client & Server**:
+   ```sh
+    npm run dev
 ## Contributing 🤝
 
 This project is open-source and welcomes contributions. Feel free to visit [parthkapoor-dev/create-mern-js](https://github.com/ParthKapoor-dev/create-mern-js)
