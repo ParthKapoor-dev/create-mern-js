@@ -36,7 +36,7 @@ export function ThemeSwitch() {
           <Switch checked={checked} onCheckedChange={handleChange} />
         </HoverCardTrigger>
         <HoverCardContent className="text-sm w-fit h-fit">
-          Change to {checked ? "Light" : "Dark"}  Mode
+          Change to <span className="font-semibold">{checked ? "Light" : "Dark"}</span>  Mode
         </HoverCardContent>
       </HoverCard>
 

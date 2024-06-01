@@ -2,8 +2,16 @@
 
 const title = "Meet the Developer , Parth Kapoor";
 
-const desc = "Hi 👋, I 'm Parth & I have developed this NPM Package for you. Well Actually , I did it for myself. Whenever , I was in a Hackathon or rapid-code situation, I always disliked the setup code , the same code I had to write for every app that I made in MERN. So I thought of why not making an Npm package , where I could simply deploy all the setup code directly in my new code file & That's why I build CREATE-MERN-JS. I hope you like it , Also It is an open source project , So You could visit parthkapoor-dev/create-mern-js to add new features & resolve existing issues.";
+const desc1 = "Hi 👋, I'm Parth. I`ve developed an NPM package called CREATE-MERN-JS just for you (and a bit for myself too)!"
 
-export const data = { 
-  title , desc
+const desc2 = "Whenever I participated in hackathons or rapid coding sessions, I found it frustrating to repeatedly write the same setup code for every MERN app.So, I decided to simplify the process by creating this package.With CREATE - MERN - JS, you can quickly deploy all the necessary setup code directly into your new project files."
+
+const desc3 = <p>
+  I hope you find it as useful as I do.Plus, it`s an open - source project! Feel free to visit <a target="_blank" className="font-semibold" href="https://github.com/ParthKapoor-dev/create-mern-js"> parthkapoor-dev/create-mern-js</a>  to contribute new features or resolve existing issues.
+</p>
+
+const desc4 = "Happy coding!"
+
+export const data = {
+  title, desc: [desc1, desc2, desc3, desc4]
 }

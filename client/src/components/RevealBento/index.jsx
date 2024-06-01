@@ -8,7 +8,7 @@ import DrawerBox from "../Drawer";
 
 export const RevealBento = () => {
   return (
-    <div className="min-h-screen bg-zinc-900 px-4 py-12 text-zinc-50">
+    <div className="min-h-screen bg-zinc-800 dark:bg-[#020817] px-4 py-12 text-zinc-50">
       <Logo />
       <motion.div
         initial="initial"
@@ -51,7 +51,7 @@ const Block = ({ className, ...rest }) => {
         damping: 50,
       }}
       className={twMerge(
-        "col-span-4 rounded-lg border border-zinc-700 bg-zinc-800 p-6",
+        "col-span-4 rounded-lg border border-zinc-700 bg-zinc-700 p-6",
         className
       )}
       {...rest}

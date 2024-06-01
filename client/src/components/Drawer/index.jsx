@@ -16,13 +16,19 @@ export default function DrawerBox({btnName}) {
   return (
     <Drawer>
       <DrawerTrigger className="text-lg h-full w-full">{btnName}</DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="px-20">
         <DrawerHeader>
-          <DrawerTitle>
+          <DrawerTitle className=" text-2xl">
             {data.title}
           </DrawerTitle>
-          <DrawerDescription>
-            {data.desc}
+          <DrawerDescription className="text-base">
+            <div className="flex-col gap-2">
+              {data.desc.map((item) => (
+                <div>
+                  {item}
+                </div>
+              ))}
+            </div>
           </DrawerDescription>
         </DrawerHeader>
         <DrawerFooter>
