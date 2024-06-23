@@ -24,4 +24,5 @@ console.log('Installing Dependencies for ' + repoName);
 const installedDeps = runCommand(installDepsCommand);
 if (!installedDeps) process.exit(-1);
 
-console.log('Congratulations! You are ready')
+console.log('💫Ready to use Next.js Project!');
+console.log('If any issue with git exists , try deleteing .git files in your-app & re-intialize git OR checkout docs');
