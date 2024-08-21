@@ -13,6 +13,7 @@ Hi there! 👋 I'm Parth, and I've developed **CREATE-MERN-JS** to streamline yo
 - **ShadCN UI & Themes** for beautiful, customizable components
 - **Hover.dev** for Interactive UI/UX
 - **React Router** for dynamic routing
+- **React-Redux** and **Redux Toolkit** for state management
 - **Framer Motion** for smooth animations
 - **JOI** for data validation
 - **DotEnv** for environment variables management
@@ -42,7 +43,10 @@ Follow these steps to get started with your new MERN application:
     PORT=3000
     MONGO_URI="mongodb+srv://<username>:<password>.focvrms.mongodb.net/db-name"
     SECRET="thisisasamplesecretpleasecreateyourownnewsecretforthisapp"
-5. **Start by running following commands in Client & Server**:
+5. **create .env file in Client Directory**:
+   ```sh
+    VITE_URI="your_backend_uri"
+6. **Start by running following commands in Client & Server**:
    ```sh
     npm run dev
 ## Contributing 🤝
