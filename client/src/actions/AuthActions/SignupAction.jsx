@@ -1,8 +1,8 @@
-import { serverUrl } from "@/currentMode";
+import { AuthLogin } from "@/redux/slice/auth.slice";
 import axios from "axios";
 
-export default async function signupAction(name, email, password , dispatch) {
-  const url = serverUrl + '/auth/signup';
+export default async function signupAction(name, email, password, dispatch) {
+  const url = import.meta.env.VITE_URI + '/auth/signup';
   const data = { name, email, password }
 
   try {
@@ -14,15 +14,14 @@ export default async function signupAction(name, email, password , dispatch) {
 
     const json = response.data;
     if (json.success) {
-      dispatch({ type: "Login", payload: json.data });
-      console.log("success");
-      return { success : true , json };
+      dispatch(AuthLogin(json.data));
+      return { success: true, json };
     } else {
       throw new Error(json.message);
     }
   } catch (error) {
     console.log(error.message);
-    return { success: false , message : error.message}
+    return { success: false, message: error.message }
   }
 
 }

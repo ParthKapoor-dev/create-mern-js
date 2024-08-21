@@ -1,16 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
-import { UserContextProvider } from "./UserContextProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "./ThemeProvider";
+import ReduxProvider from "./ReduxProvider";
 
 export default function Providers({ children }) {
   return (
     <BrowserRouter>
-      <UserContextProvider >
+      <ReduxProvider>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           {children}
         </ThemeProvider>
-      </UserContextProvider>
+      </ReduxProvider>
       <Toaster />
     </BrowserRouter>
   )

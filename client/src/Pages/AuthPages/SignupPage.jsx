@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import useUserContext from "@/hooks/useUserContext";
+import { useDispatch } from "react-redux";
 
 export default function SignupPage() {
   const { toast } = useToast();
@@ -23,7 +23,7 @@ export default function SignupPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const nameRef = useRef();
-  const { dispatch } = useUserContext();
+  const dispatch = useDispatch();
 
   async function handleSignup(event) {
     event.preventDefault();
@@ -33,12 +33,12 @@ export default function SignupPage() {
     const name = nameRef.current.value;
 
     try {
-      const signupData = await signupAction(name, email, password , dispatch);
+      const signupData = await signupAction(name, email, password, dispatch);
       if (!signupData.success) {
         throw new Error(signupData.message);
       }
       toast({
-        title : "Hi 👋 " + signupData.json.data.user.name + " , Signup is Successful!"
+        title: "Hi 👋 " + signupData.json.data.user.name + " , Signup is Successful!"
       })
     } catch (error) {
       console.log(error);

@@ -11,16 +11,18 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
-import useUserContext from "@/hooks/useUserContext"
 
 import { useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
 export default function LoginPage() {
 
   const [disabled, setDisabled] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { dispatch, user } = useUserContext();
+  const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+
   const { toast } = useToast();
 
   async function handleLogin() {
@@ -28,7 +30,7 @@ export default function LoginPage() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     try {
-      const loginData = await loginAction(email, password , dispatch);
+      const loginData = await loginAction(email, password, dispatch);
       if (!loginData.success) {
         throw new Error(loginData.message);
       }
@@ -58,20 +60,20 @@ export default function LoginPage() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Email">Email</Label>
-                <Input id="Email" placeholder="Email" ref={emailRef}/>
+                <Input id="Email" placeholder="Email" ref={emailRef} />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="Password">Password</Label>
-                <Input id="Password" type="password" placeholder="Password" ref={passwordRef}/>
+                <Input id="Password" type="password" placeholder="Password" ref={passwordRef} />
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
-          <Button  className="w-full" onClick={handleLogin} disabled={disabled}>
+          <Button className="w-full" onClick={handleLogin} disabled={disabled}>
             Login
           </Button>
-          <Button  variant="outline" className="w-full" >
+          <Button variant="outline" className="w-full" >
             Go To SignUp
           </Button>
         </CardFooter>
